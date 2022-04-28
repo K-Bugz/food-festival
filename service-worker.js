@@ -1,4 +1,4 @@
-const APP_PREFIX = 'FoodEvent-';     
+const APP_PREFIX = 'food-festival';
 const VERSION = 'version_01';
 const CACHE_NAME = APP_PREFIX + VERSION
 const FILES_TO_CACHE = [
@@ -57,8 +57,8 @@ self.addEventListener('activate', function (e) {
       cacheKeeplist.push(CACHE_NAME);
 
       return Promise.all(keyList.map(function (key, i) {
-        if (cacheKeeplist.indexOf(key) === -1) {
-          console.log('deleting cache : ' + keyList[i] );
+        if (cacheKeeplist.indexOf(key) === -1) { // will return -1 if item if item is not in the keep list then delete it!!!
+          console.log('deleting cache : ' + keyList[i]);
           return caches.delete(keyList[i]);
         }
       }));
